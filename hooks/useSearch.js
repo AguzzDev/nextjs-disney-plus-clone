@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 
-export default function useSearch (ref) {
+export default function useSearch(ref) {
   const [query, setQuery] = useState('')
   const [order, setOrder] = useState('title_ASC')
   const [genre, setGenre] = useState('All')
@@ -38,7 +38,7 @@ export default function useSearch (ref) {
     setTimeout(() => {
       axios.post('/api/search', {
         params: {
-          s: !query ? router.query.s : query,
+          s: query,
           orderBy: order,
           genre: genre
         },
@@ -47,7 +47,7 @@ export default function useSearch (ref) {
         }
       })
         .then(res => {
-          router.push(`/search?s=${!query ? router.query.s : query}&orderBy=${order}&genre=${genre}`)
+          router.push(`/search?s=${query}&orderBy=${order}&genre=${genre}`)
           setSearch(res.data)
         })
         .catch(err => console.log(err))
