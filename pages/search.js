@@ -6,7 +6,7 @@ import { IconXS } from '../components/Icons'
 import { SearchIcon } from '@heroicons/react/solid'
 import useSearch from '../hooks/useSearch'
 
-export default function Search () {
+export default function Search() {
   const debounceRef = useRef()
 
   const { handleSubmit, setOrder, setGenre, query, search } = useSearch(debounceRef)
@@ -16,9 +16,9 @@ export default function Search () {
       <div className='mb-10 p-5 bg-[#040a26] '>
 
         <form onSubmit={handleSubmit}>
-          <div className='flex items-center space-x-3 py-3 px-5 border-b border-gray-300 w-3/6'>
+          <div className='flex items-center space-x-3 py-3 px-5 border-b border-gray-300 w-full sm:w-3/6'>
             <IconXS Icon={SearchIcon} color='#040714' />
-            <input ref={debounceRef} value={query} onChange={handleSubmit} className='bg-transparent w-5/6 outline-none' />
+            <input ref={debounceRef} value={query} onChange={handleSubmit} className='font-bold text-lg bg-transparent w-5/6 outline-none' />
           </div>
 
           <div className='flex space-x-5 mt-5'>
